@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/Afnan.dir/Afnan.cpp.o  -o Afnan 
