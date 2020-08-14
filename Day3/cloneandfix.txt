@@ -1,0 +1,47 @@
+Afnan Elhamshari
+8/14/2020
+
+##
+Purpose: Cloning a Repo and fixing the problems with packages to make the executable
+##
+
+#initializing master in a terminal
+$ source /opt/ros/melodic/setup.bash
+$ roscore
+
+#In another terminal move to the target directory for cloning 
+$ cd Desktop/AUC_ROS/Day3
+
+#clone the repo
+$ git clone https://github.com/khaledgabr77/AUC-Robotics-Summer-Camp.git
+
+#Move to the new repo and removing the build and devel files
+$ cd Auc-Robotics-Summer-Camp/Day3/catkin_ws/
+$ rm -r build/ devel/
+
+#intialize catkin make
+$ catkin_make
+
+#errors found:
+CMake Error at src/ball_chaser/CMakeLists.txt:15 (add_service_files):
+  Unknown CMake command "add_service_files".
+
+#steps to resolve the error
+#in another terminal do the following:
+$ cd src/src/ball_chaser
+$ gedit CMakeLists.txt
+
+#in the file add the following under find_package, then save and exit
+find_package(catkin REQUIRED COMPONENTS
+	 message_generation
+	 std_msgs
+	 roscpp
+	 rospy
+)
+
+#in the first terminal
+$ catkin_make
+$ source devel/setup.bash
+$ cd src/src/my_robot/launch
+$ roslaunch my_robot world.launch
+
