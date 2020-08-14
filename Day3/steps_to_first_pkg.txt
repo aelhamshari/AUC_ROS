@@ -1,0 +1,71 @@
+Afnan Elhamshari
+8/14/2020
+
+##
+Steps to explain how I made my first ROS pkg
+##
+
+#intialize ROS master
+$ source /opt/ros/melodic/setup.bash
+$ roscore
+
+#In a different terminal, go to the target directory and make a workspace
+$ cd AUC_ROS/Day3
+$ mkdir Day3_ws
+
+#intialize workspace
+$ cd Day3_ws
+$ catkin_make
+$ source devel/setup.bash
+
+#create the package
+$ cd src
+$ catkin_create_pkg first_pkg std_msgs sensor_msgs rospy roscpp
+
+#Re-initializing workspace
+$ cd .. #make sure you are in ~/Day3_ws
+$ catkin_make
+$ source devel/setup.bash
+
+#to make sure the pkg exists
+$ roslaunch f + tab
+filters                     forward_command_controller
+first_pkg/  
+
+#the pkg is now created
+
+###########
+Editing .xml file
+###########
+
+$ cd src/first_pkg
+$ gedit package.xml
+#on line 9: modify to your email and name
+<maintainer email="afnan.khalid1997@gmail.com">Afnan Elhamshari</maintainer>
+
+###########
+running .cpp and .py files in package
+###########
+
+# .py file
+
+$ cd first_pkg
+$ mkdir script
+$ cd script
+$ cp /home/afnan/Desktop/Afnan.py /home/afnan/Desktop/AUC_ROS/Day3/Day3_ws/src/first_pkg/script/
+$ gedit Afnan.py
+
+###modify the file to add ros dep: on the first line add (with the pound sign), save and exit
+#! /usr/bin/env python
+
+$ chmod +x Afnan.py           #to make the file executable
+$ rosrun first_pkg Afnan.py   #runs the .py file inside ros
+
+
+# .cpp file
+
+$ cd firstpkg/src
+$ cp /home/afnan/Desktop/Afnan.cpp /home/afnan/Desktop/AUC_ROS/Day3/Day3_ws/src/first_pkg/src/
+$ g++ Afnan.cpp -o output    #to compile the .cpp file
+$ rosrun first_pkg output    #runs the .cpp file inside ros
+
