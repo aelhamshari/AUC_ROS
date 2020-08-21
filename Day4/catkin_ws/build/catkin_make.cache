@@ -1,0 +1,2 @@
+afnan
+-DCATKIN_DEVEL_PREFIX=/home/afnan/Desktop/AUC_ROS/Day4/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/afnan/Desktop/AUC_ROS/Day4/catkin_ws/install -G Unix Makefiles
