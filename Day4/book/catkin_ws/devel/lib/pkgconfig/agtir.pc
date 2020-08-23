@@ -1,0 +1,8 @@
+prefix=/home/afnan/Desktop/AUC_ROS/Day4/book/catkin_ws/devel
+
+Name: agtir
+Description: Description of agtir
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
