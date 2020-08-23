@@ -138,6 +138,10 @@ add_executable(count_pub_node src/count_publisher.cpp)
 target_link_libraries(count_pub_node ${catkin_LIBRARIES})
 add_executable(count_sub_node src/count_subscriber.cpp)
 target_link_libraries(count_sub_node ${catkin_LIBRARIES})
+add_executable(word_count_client src/wordcount_client.cpp)
+target_link_libraries(word_count_client ${catkin_LIBRARIES})
+add_executable(word_count_server src/wordcount_server.cpp)
+target_link_libraries(word_count_server ${catkin_LIBRARIES})
 
 
 ## Rename C++ executable without prefix
