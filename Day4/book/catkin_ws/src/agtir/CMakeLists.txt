@@ -135,6 +135,9 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(hello_node src/hello.cpp)
+add_executable(velocitypub_node src/velocity.cpp)
+add_executable(posesub_node src/pose_sub.cpp)
+add_executable(log_node src/log_types.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -148,7 +151,9 @@ add_executable(hello_node src/hello.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(hello_node ${catkin_LIBRARIES} )
-
+target_link_libraries(velocitypub_node ${catkin_LIBRARIES} )
+target_link_libraries(posesub_node ${catkin_LIBRARIES} )
+target_link_libraries(log_node ${catkin_LIBRARIES} )
 #############
 ## Install ##
 #############
