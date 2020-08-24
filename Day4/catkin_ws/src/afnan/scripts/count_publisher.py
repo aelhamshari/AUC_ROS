@@ -6,7 +6,7 @@ from std_msgs.msg import Int32
 def talker():
     pub = rospy.Publisher('count', Int32 , queue_size=10)
     rospy.init_node('node1py', anonymous=True)
-    rate = rospy.Rate(3) # 3hz
+    rate = rospy.Rate(1) # 1hz
     count = 0
     while not rospy.is_shutdown():
         rospy.loginfo(count)
