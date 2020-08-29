@@ -12,29 +12,25 @@
   <!-- Launch other relevant files-->
   <include file="$(find my_first_robot)/launch/my_robot_description.launch"/>
 
+  <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
 
   <!-- World File -->
 
   <!-- Launch Gazebo World -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="$(find my_first_robot)/worlds/empty.world"/>
-      <arg name="use_sim_time" value="true"/>
-      <arg name="debug" value="false"/>
-      <arg name="gui" value="true" />
-  </include>
+  <include file="$(find my_first_robot)/launch/my_world.launch"/>
   <!-- Find my robot Description-->
   <param name="my_robot_description" command="$(find xacro)/xacro --inorder '$(find my_first_robot)/urdf/my_robot.xacro'"/>
 
   <!-- Spawn My Robot -->
-  <!--launch rviz-->
-
-
-  <node name="rviz" pkg="rviz" type="rviz" respawn="true"/>
- 
-
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
         args="-urdf -param my_robot_description -model my_first_robot 
               -x $(arg x) -y $(arg y) -z $(arg z)
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
+              
+  <!--launch rviz-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  <!--node name="rviz" pkg="rviz" type="rviz" respawn="false"/-->
+
+
 
 </launch>

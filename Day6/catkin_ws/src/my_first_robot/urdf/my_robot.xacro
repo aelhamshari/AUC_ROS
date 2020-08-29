@@ -4,6 +4,13 @@
     
     <xacro:include filename="$(find my_first_robot)/urdf/my_robot.gazebo"/>
 
+    <link name="base_link" />
+
+    <joint name="base_link_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+    </joint>
+    
     <link name="chassis">
         <inertial>
         <mass value="1"/>
@@ -54,7 +61,7 @@
     </link>
 
     <joint name="chassis_to_right_wheel" type="continuous">
-        <origin rpy="0 0.0 0.0" xyz="0.0 0.275 -0.03"/>
+        <origin rpy="0 0.0 0.0" xyz="0.0 -0.275 -0.03"/>
         <parent link="chassis"/>
         <child link="right_wheel"/>
         <axis xyz="0.0 -1 0.0"/>
@@ -87,7 +94,7 @@
     </link>
 
     <joint name="chassis_to_left_wheel" type="continuous">
-        <origin rpy="0 0.0 0.0" xyz="0.0 -0.275 -0.03"/>
+        <origin rpy="0 0.0 0.0" xyz="0.0 0.275 -0.03"/>
         <parent link="chassis"/>
         <child link="left_wheel"/>
         <axis xyz="0 1 0.0"/>
